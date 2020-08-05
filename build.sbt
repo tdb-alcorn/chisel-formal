@@ -1,7 +1,7 @@
 organization := "edu.berkeley.cs"
 name := "chisel-formal"
 
-version := "0.1"
+version := "0.1-SNAPSHOT"
 
 //scalaVersion := "2.13.3"
 scalaVersion := "2.12.10"
