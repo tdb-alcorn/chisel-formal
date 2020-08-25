@@ -2,7 +2,7 @@ package chisel3.formal
 
 import java.io.PrintWriter
 
-import org.scalatest.flatspec.AnyFlatSpec
+import org.scalatest.FlatSpec
 import chisel3.RawModule
 
 import chisel3.formal.tags.Formal
@@ -26,7 +26,7 @@ import chisel3.formal.tags.Formal
  * }
  * ```
  */
-abstract class FormalSpec extends AnyFlatSpec {
+abstract class FormalSpec extends FlatSpec {
   val sbyLineNumberPattern = """.*:\s*\d+(?:\.\d+)?-(\d+)(?:\.\d+)?.*""".r
   val firrtlLineNumberPattern = """.*//\s*@\[(.*)]\s*""".r
   private var counter = 0
