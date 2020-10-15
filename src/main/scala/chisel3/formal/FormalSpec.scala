@@ -33,7 +33,7 @@ abstract class FormalSpec extends FlatSpec {
   def verify(dutGen: () => RawModule): Unit = {
     it should s"work in instance $counter" taggedAs(Formal) in {
       val result = Driver(dutGen)
-      val rtlLines = result.rtl.lines.toArray
+      val rtlLines = result.rtl.linesIterator.toArray
       // write out symbiyosys output stream
       new PrintWriter(s"build/${result.moduleName}_sby_output.log") {
         write(result.output)
@@ -44,7 +44,7 @@ abstract class FormalSpec extends FlatSpec {
         write(result.error)
         close()
       }
-      for (line <- result.output.lines) {
+      for (line <- result.output.linesIterator) {
         checkLine(result, rtlLines, line)
       }
     }
