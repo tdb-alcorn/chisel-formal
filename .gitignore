@@ -1,2 +1,13 @@
+.bloop
+.metals
 .idea
-**/target
+.jvmops
+target
+project/*
+build/*
+*.v
+*.sv
+*.fir
+*.conf
+*.anno.json
+settings.json
