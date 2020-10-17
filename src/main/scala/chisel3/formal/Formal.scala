@@ -90,4 +90,10 @@ trait Formal {
       block
     }
   }
+
+  def afterReset(block: => Any)
+                (implicit sourceInfo: SourceInfo,
+                 compileOptions: CompileOptions): Unit = {
+    chiselWhen(numResets >= 1.U)(block)
+  }
 }
