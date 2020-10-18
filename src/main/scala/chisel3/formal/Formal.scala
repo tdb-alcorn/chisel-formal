@@ -6,6 +6,7 @@ import chisel3._
 import chisel3.experimental.{verification => v}
 import chisel3.internal.sourceinfo.SourceInfo
 import chisel3.{when => chiselWhen}
+import chisel3.util.experimental.BoringUtils
 
 
 trait Formal {
@@ -14,7 +15,7 @@ trait Formal {
   private val resetCounter = Module(new ResetCounter)
   resetCounter.io.clock := clock
   resetCounter.io.reset := reset
-  val numResets = resetCounter.io.numResets
+  val numResets = WireInit(resetCounter.io.numResets)
   val timeSinceReset = resetCounter.io.timeSinceReset
 
   private val testCase = Module(new TestCase).io.testCase
@@ -94,6 +95,8 @@ trait Formal {
   def afterReset(block: => Any)
                 (implicit sourceInfo: SourceInfo,
                  compileOptions: CompileOptions): Unit = {
+    val numResets = WireInit(0.U(32.W))
+    BoringUtils.bore(this.numResets, Seq(numResets))
     chiselWhen(numResets >= 1.U)(block)
   }
 }

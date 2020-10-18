@@ -13,7 +13,7 @@ lazy val commonSettings = Seq(
   libraryDependencies ++= Seq("chisel3","firrtl").map { dep: String =>
     "edu.berkeley.cs" %% dep % sys.props.getOrElse(dep + "Version", defaultVersions(dep))
   },
-  libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.8",
+  libraryDependencies += "edu.berkeley.cs" %% "chiseltest" % "0.3.0-RC1"
 )
 
 scalacOptions ++= Seq(
