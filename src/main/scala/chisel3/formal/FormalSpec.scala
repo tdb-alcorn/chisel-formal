@@ -5,7 +5,7 @@ import java.io.PrintWriter
 import org.scalatest.FlatSpec
 import chisel3.RawModule
 
-import chisel3.formal.tags.Formal
+import chisel3.formal.tags.{Formal => FormalTag}
 
 
 /**
@@ -31,7 +31,7 @@ abstract class FormalSpec extends FlatSpec {
   val firrtlLineNumberPattern = """.*//\s*@\[(.*)]\s*""".r
   private var counter = 0
   def verify(dutGen: () => RawModule): Unit = {
-    it should s"work in instance $counter" taggedAs(Formal) in {
+    it should s"work in instance $counter" taggedAs(FormalTag) in {
       val result = Driver(dutGen)
       val rtlLines = result.rtl.linesIterator.toArray
       // write out symbiyosys output stream

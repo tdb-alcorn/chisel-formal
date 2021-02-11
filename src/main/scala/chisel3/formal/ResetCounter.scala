@@ -7,7 +7,9 @@ import chisel3.util.HasBlackBoxInline
 class ResetCounter extends BlackBox with HasBlackBoxInline {
   val io = IO(new ResetCounterIO)
   setInline("ResetCounter.sv",
-    s"""module ResetCounter(
+    s"""`timescale 1ns/1ns
+       |
+       |module ResetCounter(
        |  input clock,
        |  input reset,
        |  output [31:0] numResets,

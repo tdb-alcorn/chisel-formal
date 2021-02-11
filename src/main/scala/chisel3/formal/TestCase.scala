@@ -7,7 +7,9 @@ import chisel3.util.HasBlackBoxInline
 class TestCase extends BlackBox with HasBlackBoxInline {
   val io = IO(new TestCaseIO)
   setInline("TestCase.sv",
-    """module TestCase(
+    """`timescale 1ns/1ns
+      |
+      |module TestCase(
       |  output [31:0] testCase
       |);
       |  wire [31:0] test_case;
